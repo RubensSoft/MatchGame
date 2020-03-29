@@ -1,20 +1,21 @@
 import UIKit
 
-protocol LoginView: class {
+protocol GameView: class {
     func showError(error: String)
 }
 
-class LoginViewController: UIViewController {
-    let configurator = LoginConfigurator()
-    var presenter: LoginPresenter?
+class GameViewController: UIViewController {
+    let configurator = GameConfigurator()
+    var presenter: GamePresenter?
     
     override func viewDidLoad() {
         configurator.configure(controller: self)
-        presenter?.viewDidLoad()
+        
+        print("game screen")
     }
 }
 
-extension LoginViewController: LoginView {
+extension GameViewController: GameView {
     func showError(error: String) {
         print("Error: \(error)")
     }
