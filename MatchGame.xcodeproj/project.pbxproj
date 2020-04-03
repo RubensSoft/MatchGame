@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EA12B6624327CC9004246C6 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA12B6524327CC9004246C6 /* CardCollectionViewCell.swift */; };
+		0EA12B6824327CDE004246C6 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EA12B6724327CDE004246C6 /* CardCollectionViewCell.xib */; };
 		0EA55711243138A9004A0BF2 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA55710243138A9004A0BF2 /* GameRouter.swift */; };
 		0EA557132431396F004A0BF2 /* GameConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA557122431396F004A0BF2 /* GameConfigurator.swift */; };
 		0EC13C562430C3D600BB3F90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC13C552430C3D600BB3F90 /* AppDelegate.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EA12B6524327CC9004246C6 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		0EA12B6724327CDE004246C6 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		0EA55710243138A9004A0BF2 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
 		0EA557122431396F004A0BF2 /* GameConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfigurator.swift; sourceTree = "<group>"; };
 		0EC13C522430C3D600BB3F90 /* MatchGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +98,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EA55714243143D3004A0BF2 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				0EA12B6524327CC9004246C6 /* CardCollectionViewCell.swift */,
+				0EA12B6724327CDE004246C6 /* CardCollectionViewCell.xib */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
 		0EC13C492430C3D600BB3F90 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +207,7 @@
 		0ECCB76824311C1000404DDC /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				0EA55714243143D3004A0BF2 /* Card */,
 				0ECCB76924311C3600404DDC /* GameViewController.swift */,
 				0ECCB76B24311C4000404DDC /* GameView.xib */,
 				0ECCB76D24311D6D00404DDC /* GamePresenter.swift */,
@@ -311,6 +325,7 @@
 				0ECCB76C24311C4000404DDC /* GameView.xib in Resources */,
 				0EC13C5F2430C3D800BB3F90 /* Assets.xcassets in Resources */,
 				0EC13C8B2430C89100BB3F90 /* LoginView.xib in Resources */,
+				0EA12B6824327CDE004246C6 /* CardCollectionViewCell.xib in Resources */,
 				0EC13C5D2430C3D600BB3F90 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +354,7 @@
 				0EA557132431396F004A0BF2 /* GameConfigurator.swift in Sources */,
 				0ECCB76E24311D6D00404DDC /* GamePresenter.swift in Sources */,
 				0ECCB76A24311C3600404DDC /* GameViewController.swift in Sources */,
+				0EA12B6624327CC9004246C6 /* CardCollectionViewCell.swift in Sources */,
 				0ECCB76724311AFB00404DDC /* LoginConfigurator.swift in Sources */,
 				0ECCB763243118DF00404DDC /* LoginPresenter.swift in Sources */,
 				0EA55711243138A9004A0BF2 /* GameRouter.swift in Sources */,
