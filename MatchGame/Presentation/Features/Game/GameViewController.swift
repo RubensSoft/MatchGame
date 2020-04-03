@@ -2,7 +2,7 @@ import UIKit
 
 protocol GameView: class {
     func showError(error: String)
-    func showCards()
+    func showCards(cards: [Card])
 }
 
 class GameViewController: UIViewController {
@@ -11,12 +11,14 @@ class GameViewController: UIViewController {
     var presenter: GamePresenter?
     
     let cellIdentifier = "CardCollectionViewCell"
-    var cards: [Int] = []
+    var cards: [Card] = []
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         configurator.configure(controller: self)
         presenter?.setupView(self)
         
@@ -42,14 +44,30 @@ extension GameViewController: GameView {
         print("Error: \(error)")
     }
     
-    func showCards() {
-        for i in 1...16 {
-            cards.append(i)
-        }
+    func showCards(cards: [Card]) {
+        self.cards = cards
         collectionView.reloadData()
     }
     
+    private func createCellWithCard(cell: CardCollectionViewCell, card: Card) -> CardCollectionViewCell {
+        let imageName = "\(card.name)"
+        let image = UIImage(named: imageName)
+        cell.image.image = image
+        setVisibleBackCard(cell: cell)
+        return cell
+    }
     
+    private func setVisibleBackCard(cell: CardCollectionViewCell){
+        cell.backgroundImage.isHidden = false
+        cell.backgroundFrontImage.isHidden = true
+        cell.image.isHidden = true
+    }
+    
+    private func setVisibleFrontCard(cell: CardCollectionViewCell){
+        cell.backgroundImage.isHidden = true
+        cell.backgroundFrontImage.isHidden = false
+        cell.image.isHidden = false
+    }
     
 }
 
@@ -87,12 +105,12 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CardCollectionViewCell
-        return cell
+        let card = cards[indexPath.row]
+        return createCellWithCard(cell: cell, card: card)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        presenter?.goToProductDetailScreen(product: products[indexPath.row])
-        print("\(indexPath.row)")
+        let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
+        setVisibleFrontCard(cell: cell)
     }
-    
 }
