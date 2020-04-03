@@ -7,63 +7,50 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardCollectionViewCell" customModule="MatchGame" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="CardCollectionViewCell" id="v6O-7g-jgz" userLabel="Collection View Cell" customClass="CardCollectionViewCell" customModule="MatchGame" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCollectionViewCell" id="fUR-yc-Lj6" customClass="CardCollectionViewCell" customModule="MatchGame" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="81N-Xf-9gf" customClass="CardCollectionViewCell" customModule="MatchGame" customModuleProvider="target">
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Rpx-84-TXB">
                 <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-card-front" translatesAutoresizingMaskIntoConstraints="NO" id="eZb-pF-DlM" userLabel="background image front">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-card" translatesAutoresizingMaskIntoConstraints="NO" id="GPf-ip-dHe">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-card" translatesAutoresizingMaskIntoConstraints="NO" id="OFE-3z-hvP" userLabel="background image">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-card-front" translatesAutoresizingMaskIntoConstraints="NO" id="2U6-ON-Lav">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alien" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-1T-dHL">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="300"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fdf-w7-G2N">
+                        <rect key="frame" x="10" y="10" width="180" height="280"/>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="OFE-3z-hvP" firstAttribute="top" secondItem="81N-Xf-9gf" secondAttribute="top" id="51S-vn-CNn"/>
-                    <constraint firstItem="qmt-1T-dHL" firstAttribute="centerX" secondItem="81N-Xf-9gf" secondAttribute="centerX" id="8gK-RO-f06"/>
-                    <constraint firstAttribute="trailing" secondItem="qmt-1T-dHL" secondAttribute="trailing" id="9Zp-Wy-lud"/>
-                    <constraint firstAttribute="bottom" secondItem="qmt-1T-dHL" secondAttribute="bottom" id="D3H-p7-oXo"/>
-                    <constraint firstItem="OFE-3z-hvP" firstAttribute="top" secondItem="81N-Xf-9gf" secondAttribute="top" id="GC5-94-Pmn"/>
-                    <constraint firstAttribute="trailing" secondItem="OFE-3z-hvP" secondAttribute="trailing" id="I1C-ep-RBa"/>
-                    <constraint firstAttribute="bottom" secondItem="OFE-3z-hvP" secondAttribute="bottom" id="ID2-Y8-Uyf"/>
-                    <constraint firstAttribute="trailing" secondItem="eZb-pF-DlM" secondAttribute="trailing" id="IJn-tH-hph"/>
-                    <constraint firstAttribute="bottom" secondItem="OFE-3z-hvP" secondAttribute="bottom" id="Iyv-wT-RIn"/>
-                    <constraint firstItem="eZb-pF-DlM" firstAttribute="leading" secondItem="81N-Xf-9gf" secondAttribute="leading" id="J4N-fy-UgR"/>
-                    <constraint firstItem="qmt-1T-dHL" firstAttribute="top" secondItem="81N-Xf-9gf" secondAttribute="top" id="Pmy-sO-16q"/>
-                    <constraint firstAttribute="bottom" secondItem="eZb-pF-DlM" secondAttribute="bottom" id="SDa-gS-TyY"/>
-                    <constraint firstAttribute="trailing" secondItem="OFE-3z-hvP" secondAttribute="trailing" id="aaW-zO-8hN"/>
-                    <constraint firstItem="qmt-1T-dHL" firstAttribute="centerY" secondItem="81N-Xf-9gf" secondAttribute="centerY" id="csH-2W-Vs0"/>
-                    <constraint firstItem="eZb-pF-DlM" firstAttribute="leading" secondItem="81N-Xf-9gf" secondAttribute="leading" id="iMW-mM-ptH"/>
-                    <constraint firstItem="eZb-pF-DlM" firstAttribute="top" secondItem="81N-Xf-9gf" secondAttribute="top" id="ie7-zY-T75"/>
-                    <constraint firstItem="eZb-pF-DlM" firstAttribute="top" secondItem="81N-Xf-9gf" secondAttribute="top" id="jds-AB-0ks"/>
-                    <constraint firstAttribute="bottom" secondItem="eZb-pF-DlM" secondAttribute="bottom" id="mYE-X3-Keg"/>
-                    <constraint firstItem="qmt-1T-dHL" firstAttribute="leading" secondItem="81N-Xf-9gf" secondAttribute="leading" id="uQI-GV-Ic5"/>
-                    <constraint firstItem="OFE-3z-hvP" firstAttribute="leading" secondItem="81N-Xf-9gf" secondAttribute="leading" id="vJ8-H0-dRE"/>
-                    <constraint firstAttribute="trailing" secondItem="eZb-pF-DlM" secondAttribute="trailing" id="x2P-O5-a5E"/>
-                    <constraint firstItem="OFE-3z-hvP" firstAttribute="leading" secondItem="81N-Xf-9gf" secondAttribute="leading" id="yzq-G3-tgN"/>
+                    <constraint firstItem="fdf-w7-G2N" firstAttribute="top" secondItem="Rpx-84-TXB" secondAttribute="top" constant="10" id="2H5-Op-FY3"/>
+                    <constraint firstItem="2U6-ON-Lav" firstAttribute="leading" secondItem="Rpx-84-TXB" secondAttribute="leading" id="8oP-cE-I3c"/>
+                    <constraint firstItem="GPf-ip-dHe" firstAttribute="top" secondItem="Rpx-84-TXB" secondAttribute="top" id="J7F-wt-HxA"/>
+                    <constraint firstItem="fdf-w7-G2N" firstAttribute="leading" secondItem="Rpx-84-TXB" secondAttribute="leading" constant="10" id="Kx8-GC-c1g"/>
+                    <constraint firstAttribute="trailing" secondItem="2U6-ON-Lav" secondAttribute="trailing" id="YWZ-cf-QNF"/>
+                    <constraint firstAttribute="trailing" secondItem="GPf-ip-dHe" secondAttribute="trailing" id="Zvl-jX-LGB"/>
+                    <constraint firstItem="2U6-ON-Lav" firstAttribute="top" secondItem="Rpx-84-TXB" secondAttribute="top" id="kVN-zq-ajL"/>
+                    <constraint firstAttribute="bottom" secondItem="fdf-w7-G2N" secondAttribute="bottom" constant="10" id="pUc-G9-7yh"/>
+                    <constraint firstAttribute="bottom" secondItem="2U6-ON-Lav" secondAttribute="bottom" id="pmQ-y4-RFS"/>
+                    <constraint firstItem="GPf-ip-dHe" firstAttribute="leading" secondItem="Rpx-84-TXB" secondAttribute="leading" id="r5y-AE-XfH"/>
+                    <constraint firstAttribute="trailing" secondItem="fdf-w7-G2N" secondAttribute="trailing" constant="10" id="tQ7-Lh-GyA"/>
+                    <constraint firstAttribute="bottom" secondItem="GPf-ip-dHe" secondAttribute="bottom" id="ugU-dR-Nah"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="85" height="149"/>
+            <size key="customSize" width="226" height="323"/>
             <connections>
-                <outlet property="backgroundImage" destination="OFE-3z-hvP" id="frE-fv-DaG"/>
-                <outlet property="backgroundView" destination="81N-Xf-9gf" id="EW4-3C-QL0"/>
-                <outlet property="cell" destination="81N-Xf-9gf" id="v9f-0s-aA5"/>
-                <outlet property="image" destination="qmt-1T-dHL" id="tGp-Lc-9SY"/>
+                <outlet property="backgroundFrontImage" destination="2U6-ON-Lav" id="t3E-oD-kKe"/>
+                <outlet property="backgroundImage" destination="GPf-ip-dHe" id="hUR-W3-I0h"/>
+                <outlet property="image" destination="fdf-w7-G2N" id="OYb-xn-Phk"/>
             </connections>
-            <point key="canvasLocation" x="-979.71014492753636" y="-2.6785714285714284"/>
+            <point key="canvasLocation" x="-15.942028985507248" y="-64.620535714285708"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="alien" width="256" height="256"/>
         <image name="background-card" width="256" height="256"/>
         <image name="background-card-front" width="179" height="256"/>
     </resources>

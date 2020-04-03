@@ -2,9 +2,9 @@ import Foundation
 
 class GameConfigurator {
     func configure(controller: GameViewController){
-        //let useCase
+        let useCase = GetCardsUseCaseImplementation()
         let router = GameRouter(controller: controller)
         
-        controller.presenter = GamePresenterImplementation(router: router)
+        controller.presenter = GamePresenterImplementation(cardUseCase: useCase, router: router)
     }
 }
