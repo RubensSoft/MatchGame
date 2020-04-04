@@ -3,6 +3,8 @@ import UIKit
 protocol GameView: class {
     func showError(error: String)
     func showCards(cards: [Card])
+    
+    func hideCards()
 }
 
 class GameViewController: UIViewController {
@@ -14,6 +16,9 @@ class GameViewController: UIViewController {
     var cards: [Card] = []
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var indexFirstCard: Int = -1
+    var indexSecondCard: Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +42,19 @@ class GameViewController: UIViewController {
         collectionView?.register(nibCell, forCellWithReuseIdentifier: cellIdentifier)
     }
     
+    private func setIndexCard(index: Int) {
+        if indexFirstCard == -1 {
+            indexFirstCard = index
+        } else {
+            indexSecondCard = index
+        }
+    }
+    
+    private func resetIndexCards() {
+        indexFirstCard = -1
+        indexSecondCard = -1
+    }
+    
 }
 
 extension GameViewController: GameView {
@@ -49,6 +67,18 @@ extension GameViewController: GameView {
         collectionView.reloadData()
     }
     
+    func hideCards() {
+        hideCard(idCard: indexFirstCard)
+        hideCard(idCard: indexSecondCard)
+        resetIndexCards()
+    }
+    
+    func hideCard(idCard: Int) {
+        let index = IndexPath.init(item: indexFirstCard, section: 0)
+        let cell = collectionView.cellForItem(at: index) as! CardCollectionViewCell
+        setVisibleBackCard(cell: cell)
+    }
+    
     private func createCellWithCard(cell: CardCollectionViewCell, card: Card) -> CardCollectionViewCell {
         let imageName = "\(card.name)"
         let image = UIImage(named: imageName)
@@ -58,15 +88,37 @@ extension GameViewController: GameView {
     }
     
     private func setVisibleBackCard(cell: CardCollectionViewCell){
-        cell.backgroundImage.isHidden = false
-        cell.backgroundFrontImage.isHidden = true
-        cell.image.isHidden = true
+        
+        
+        UIView.animate(withDuration: 3.0,
+                       delay: 2.0,
+                       options: [.curveEaseInOut , .allowUserInteraction],
+                       animations: {
+                        cell.backgroundImage.isHidden = false
+                        cell.backgroundFrontImage.isHidden = true
+                        cell.image.isHidden = true
+        },
+                       completion: { finished in
+                        print("Bug moved right!")
+        })
+        
     }
     
     private func setVisibleFrontCard(cell: CardCollectionViewCell){
-        cell.backgroundImage.isHidden = true
-        cell.backgroundFrontImage.isHidden = false
-        cell.image.isHidden = false
+        
+        UIView.animate(withDuration: 1.0,
+                       delay: 2.0,
+                       options: [.curveEaseInOut , .allowUserInteraction],
+                       animations: {
+                          cell.backgroundImage.isHidden = true
+                              cell.backgroundFrontImage.isHidden = false
+                              cell.image.isHidden = false
+        },
+                       completion: { finished in
+                        print("Bug moved right!")
+        })
+        
+      
     }
     
 }
@@ -112,5 +164,8 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
         setVisibleFrontCard(cell: cell)
+        
+        self.setIndexCard(index: indexPath.row)
+        presenter?.tapOnACard(idCard: cards[indexPath.row].id)
     }
 }

@@ -3,13 +3,17 @@ import Foundation
 protocol GamePresenter {
     func setupView(_ view: GameView)
     func viewDidLoad()
+    
+    func tapOnACard(idCard: Int)
 }
 
 class GamePresenterImplementation: GamePresenter {
- 
     private weak var view: GameView?
     private let router: GameRouter
     private let getCardsUseCase: GetCardsUseCase?
+    
+    private var idFirstCard: Int = -1
+    private var idSecondCard: Int = -1
     
     init(cardUseCase: GetCardsUseCase, router: GameRouter) {
         self.getCardsUseCase = cardUseCase
@@ -18,7 +22,7 @@ class GamePresenterImplementation: GamePresenter {
     
     func setupView(_ view: GameView) {
         self.view = view
-     }
+    }
     
     func viewDidLoad() {
         getCardsUseCase?.execute(completion: { (cards) in
@@ -40,4 +44,18 @@ class GamePresenterImplementation: GamePresenter {
         return cardListWithPairs
     }
     
+    func tapOnACard(idCard: Int) {
+        if idFirstCard == -1 {
+            idFirstCard = idCard
+        } else {
+            idSecondCard = idCard
+        
+        
+            
+        }
+        
+    }
+    
 }
+
+
