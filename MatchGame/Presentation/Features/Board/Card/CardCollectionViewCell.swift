@@ -14,6 +14,14 @@ class CardCollectionViewCell: UICollectionViewCell {
     func setCard(card: Card) {
         self.imageView.image = UIImage(named: "\(card.name)")
         
+        if card.isMatch {
+            self.alpha = 0
+            return
+        }
+        else {
+            self.alpha = 1
+        }
+        
         if card.isFlipped {
             showFront()
         } else {
@@ -27,8 +35,18 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func flipBack() {
-        self.imageView.isHidden = true
-        UIView.transition(from: backgroundFrontImage, to: backgroundImage, duration: 0.4, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5) {
+            self.imageView.isHidden = true
+            UIView.transition(from: self.backgroundFrontImage, to: self.backgroundImage, duration: 0.4, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+        }
+    }
+    
+    func remove(){
+        self.backgroundImage.isHidden = true
+        UIView.animate(withDuration: 0.3, delay: 0.5, options: .autoreverse, animations: {
+            self.backgroundFrontImage.alpha = 0
+            self.imageView.alpha = 0
+        }, completion: nil)
     }
     
     func showFront(){

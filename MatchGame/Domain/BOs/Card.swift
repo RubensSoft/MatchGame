@@ -5,4 +5,5 @@ struct Card {
     let name: String
     
     var isFlipped: Bool = false
+    var isMatch: Bool = false
 }

@@ -3,8 +3,6 @@ import UIKit
 protocol BoardView: class {
     func showError(error: String)
     func showCards(cards: [Card])
-    
-    func hideCards()
 }
 
 class BoardViewController: UIViewController {
@@ -14,11 +12,9 @@ class BoardViewController: UIViewController {
     
     let cellIdentifier = "CardCollectionViewCell"
     var cards: [Card] = []
+    var indexFirstCard: IndexPath?
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    var indexFirstCard: Int = -1
-    var indexSecondCard: Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,20 +37,6 @@ class BoardViewController: UIViewController {
         let nibCell = UINib(nibName: cellIdentifier, bundle: nil)
         collectionView?.register(nibCell, forCellWithReuseIdentifier: cellIdentifier)
     }
-    
-    private func setIndexCard(index: Int) {
-        if indexFirstCard == -1 {
-            indexFirstCard = index
-        } else {
-            indexSecondCard = index
-        }
-    }
-    
-    private func resetIndexCards() {
-        indexFirstCard = -1
-        indexSecondCard = -1
-    }
-    
 }
 
 extension BoardViewController: BoardView {
@@ -66,20 +48,6 @@ extension BoardViewController: BoardView {
         self.cards = cards
         collectionView.reloadData()
     }
-    
-    func hideCards() {
-        hideCard(idCard: indexFirstCard)
-        hideCard(idCard: indexSecondCard)
-        resetIndexCards()
-    }
-    
-    func hideCard(idCard: Int) {
-        let index = IndexPath.init(item: indexFirstCard, section: 0)
-        let cell = collectionView.cellForItem(at: index) as! CardCollectionViewCell
-        
-        cell.flipBack()
-    }
-
 }
 
 
@@ -125,17 +93,44 @@ extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-    
-        if cards[indexPath.row].isFlipped {
-            cell.flipBack()
-            cards[indexPath.row].isFlipped = false
-        }else{
+        
+        if !cards[indexPath.row].isFlipped && !cards[indexPath.row].isMatch {
             cell.flipFront()
             cards[indexPath.row].isFlipped = true
+            
+            if indexFirstCard == nil {
+                indexFirstCard = indexPath
+            } else {
+                checkMatch(indexPath)
+            }
         }
         
-        //
         //        self.setIndexCard(index: indexPath.row)
         //        presenter?.tapOnACard(idCard: cards[indexPath.row].id)
+    }
+    
+    func checkMatch(_ indexSecondCard: IndexPath) {
+        let cardCellOne = collectionView.cellForItem(at: indexFirstCard!) as? CardCollectionViewCell
+        let cardCellTwo = collectionView.cellForItem(at: indexSecondCard) as? CardCollectionViewCell
+        var cardOne = self.cards[indexFirstCard!.row]
+        var cardTwo = self.cards[indexSecondCard.row]
+        
+        if cardOne.id == cardTwo.id {
+            cards[indexFirstCard!.row].isMatch = true
+            cards[indexSecondCard.row].isMatch = true
+            cardCellOne?.remove()
+            cardCellTwo?.remove()
+        } else {
+            cards[indexFirstCard!.row].isFlipped = false
+            cards[indexSecondCard.row].isFlipped = false
+            cardCellOne?.flipBack()
+            cardCellTwo?.flipBack()
+        }
+        
+        if cardCellOne == nil {
+            collectionView.reloadItems(at: [indexFirstCard!])
+        }
+        
+        indexFirstCard = nil
     }
 }
