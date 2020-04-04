@@ -4,34 +4,43 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var backgroundFrontImage: UIImageView!
-    @IBOutlet weak var image: UIImageView!
-    
-    var isFront = false
-    
+    @IBOutlet weak var imageView: UIImageView!
+        
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        image.isHidden = true
+        imageView.isHidden = true
     }
     
-    func flip() {
-        if isFront {
-            flipBack()
-            isFront = false
+    func setCard(card: Card) {
+        self.imageView.image = UIImage(named: "\(card.name)")
+        
+        if card.isFlipped {
+            showFront()
         } else {
-            flipFront()
-            isFront = true
+            showBack()
         }
     }
     
     func flipFront() {
-        self.image.isHidden = false
+        self.imageView.isHidden = false
         UIView.transition(from: backgroundImage, to: backgroundFrontImage, duration: 0.4, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
     }
     
     func flipBack() {
-        self.image.isHidden = true
+        self.imageView.isHidden = true
         UIView.transition(from: backgroundFrontImage, to: backgroundImage, duration: 0.4, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+    }
+    
+    func showFront(){
+        backgroundFrontImage.isHidden = false
+        imageView.isHidden = false
+        backgroundImage.isHidden = true
+    }
+    
+    func showBack() {
+        backgroundImage.isHidden = false
+        imageView.isHidden = true
+        backgroundFrontImage.isHidden = true
     }
     
 }

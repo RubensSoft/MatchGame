@@ -76,17 +76,8 @@ extension BoardViewController: BoardView {
     func hideCard(idCard: Int) {
         let index = IndexPath.init(item: indexFirstCard, section: 0)
         let cell = collectionView.cellForItem(at: index) as! CardCollectionViewCell
-
+        
         cell.flipBack()
-    }
-    
-    private func createCellWithCard(cell: CardCollectionViewCell, card: Card) -> CardCollectionViewCell {
-        let imageName = "\(card.name)"
-        let image = UIImage(named: imageName)
-        cell.image.image = image
-
-        //cell.shownBack()
-        return cell
     }
 
 }
@@ -126,14 +117,25 @@ extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CardCollectionViewCell
         let card = cards[indexPath.row]
-        return createCellWithCard(cell: cell, card: card)
+        
+        cell.setCard(card: card)
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-        cell.flip()
-//        
-//        self.setIndexCard(index: indexPath.row)
-//        presenter?.tapOnACard(idCard: cards[indexPath.row].id)
+    
+        if cards[indexPath.row].isFlipped {
+            cell.flipBack()
+            cards[indexPath.row].isFlipped = false
+        }else{
+            cell.flipFront()
+            cards[indexPath.row].isFlipped = true
+        }
+        
+        //
+        //        self.setIndexCard(index: indexPath.row)
+        //        presenter?.tapOnACard(idCard: cards[indexPath.row].id)
     }
 }
