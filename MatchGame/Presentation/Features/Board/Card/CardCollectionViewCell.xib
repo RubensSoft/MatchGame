@@ -45,7 +45,7 @@
             <connections>
                 <outlet property="backgroundFrontImage" destination="2U6-ON-Lav" id="t3E-oD-kKe"/>
                 <outlet property="backgroundImage" destination="GPf-ip-dHe" id="hUR-W3-I0h"/>
-                <outlet property="image" destination="fdf-w7-G2N" id="OYb-xn-Phk"/>
+                <outlet property="imageView" destination="fdf-w7-G2N" id="OYb-xn-Phk"/>
             </connections>
             <point key="canvasLocation" x="-15.942028985507248" y="-64.620535714285708"/>
         </collectionViewCell>
