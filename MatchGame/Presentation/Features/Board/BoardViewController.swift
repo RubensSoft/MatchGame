@@ -76,51 +76,19 @@ extension BoardViewController: BoardView {
     func hideCard(idCard: Int) {
         let index = IndexPath.init(item: indexFirstCard, section: 0)
         let cell = collectionView.cellForItem(at: index) as! CardCollectionViewCell
-        setVisibleBackCard(cell: cell)
+
+        cell.flipBack()
     }
     
     private func createCellWithCard(cell: CardCollectionViewCell, card: Card) -> CardCollectionViewCell {
         let imageName = "\(card.name)"
         let image = UIImage(named: imageName)
         cell.image.image = image
-        setVisibleBackCard(cell: cell)
+
+        //cell.shownBack()
         return cell
     }
-    
-    private func setVisibleBackCard(cell: CardCollectionViewCell){
-        
-        
-        UIView.animate(withDuration: 3.0,
-                       delay: 2.0,
-                       options: [.curveEaseInOut , .allowUserInteraction],
-                       animations: {
-                        cell.backgroundImage.isHidden = false
-                        cell.backgroundFrontImage.isHidden = true
-                        cell.image.isHidden = true
-        },
-                       completion: { finished in
-                        print("Bug moved right!")
-        })
-        
-    }
-    
-    private func setVisibleFrontCard(cell: CardCollectionViewCell){
-        
-        UIView.animate(withDuration: 1.0,
-                       delay: 2.0,
-                       options: [.curveEaseInOut , .allowUserInteraction],
-                       animations: {
-                          cell.backgroundImage.isHidden = true
-                              cell.backgroundFrontImage.isHidden = false
-                              cell.image.isHidden = false
-        },
-                       completion: { finished in
-                        print("Bug moved right!")
-        })
-        
-      
-    }
-    
+
 }
 
 
@@ -163,9 +131,9 @@ extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-        setVisibleFrontCard(cell: cell)
-        
-        self.setIndexCard(index: indexPath.row)
-        presenter?.tapOnACard(idCard: cards[indexPath.row].id)
+        cell.flip()
+//        
+//        self.setIndexCard(index: indexPath.row)
+//        presenter?.tapOnACard(idCard: cards[indexPath.row].id)
     }
 }
