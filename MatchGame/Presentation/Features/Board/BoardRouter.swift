@@ -1,6 +1,6 @@
 import UIKit
 
-class GameRouter {
+class BoardRouter {
     let controller: UIViewController
     
     init(controller: UIViewController){

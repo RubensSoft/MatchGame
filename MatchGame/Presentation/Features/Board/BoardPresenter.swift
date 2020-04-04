@@ -1,26 +1,26 @@
 import Foundation
 
-protocol GamePresenter {
-    func setupView(_ view: GameView)
+protocol BoardPresenter {
+    func setupView(_ view: BoardView)
     func viewDidLoad()
     
     func tapOnACard(idCard: Int)
 }
 
-class GamePresenterImplementation: GamePresenter {
-    private weak var view: GameView?
-    private let router: GameRouter
+class BoardPresenterImplementation: BoardPresenter {
+    private weak var view: BoardView?
+    private let router: BoardRouter
     private let getCardsUseCase: GetCardsUseCase?
     
     private var idFirstCard: Int = -1
     private var idSecondCard: Int = -1
     
-    init(cardUseCase: GetCardsUseCase, router: GameRouter) {
+    init(cardUseCase: GetCardsUseCase, router: BoardRouter) {
         self.getCardsUseCase = cardUseCase
         self.router = router
     }
     
-    func setupView(_ view: GameView) {
+    func setupView(_ view: BoardView) {
         self.view = view
     }
     

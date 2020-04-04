@@ -1,16 +1,16 @@
 import UIKit
 
-protocol GameView: class {
+protocol BoardView: class {
     func showError(error: String)
     func showCards(cards: [Card])
     
     func hideCards()
 }
 
-class GameViewController: UIViewController {
+class BoardViewController: UIViewController {
     
-    let configurator = GameConfigurator()
-    var presenter: GamePresenter?
+    let configurator = BoardConfigurator()
+    var presenter: BoardPresenter?
     
     let cellIdentifier = "CardCollectionViewCell"
     var cards: [Card] = []
@@ -57,7 +57,7 @@ class GameViewController: UIViewController {
     
 }
 
-extension GameViewController: GameView {
+extension BoardViewController: BoardView {
     func showError(error: String) {
         print("Error: \(error)")
     }
@@ -124,7 +124,7 @@ extension GameViewController: GameView {
 }
 
 
-extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     private func setSizeItemsCollectionView() {
         var widthItemSize = UIScreen.main.bounds.width/2.25

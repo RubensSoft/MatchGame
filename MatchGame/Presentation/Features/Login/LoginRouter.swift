@@ -10,7 +10,7 @@ class LoginRouter {
     
     func goToGameScreen(){
         let navigation = controller.navigationController
-        let gameScreen = GameViewController()
+        let gameScreen = BoardViewController()
     
         navigation?.pushViewController(gameScreen, animated: true)
     }
