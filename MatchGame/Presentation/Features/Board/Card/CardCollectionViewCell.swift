@@ -5,7 +5,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var backgroundFrontImage: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
-        
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView.isHidden = true
@@ -15,11 +15,10 @@ class CardCollectionViewCell: UICollectionViewCell {
         self.imageView.image = UIImage(named: "\(card.name)")
         
         if card.isMatch {
-            self.alpha = 0
+            hideCard()
             return
-        }
-        else {
-            self.alpha = 1
+        } else {
+            showCard()
         }
         
         if card.isFlipped {
@@ -42,10 +41,14 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func remove(){
-        self.backgroundImage.isHidden = true
+        
         UIView.animate(withDuration: 0.3, delay: 0.5, options: .autoreverse, animations: {
+            //             self.backgroundImage.isHidden = true
+            self.backgroundImage.alpha = 0
+            
             self.backgroundFrontImage.alpha = 0
             self.imageView.alpha = 0
+            
         }, completion: nil)
     }
     
@@ -59,6 +62,18 @@ class CardCollectionViewCell: UICollectionViewCell {
         backgroundImage.isHidden = false
         imageView.isHidden = true
         backgroundFrontImage.isHidden = true
+    }
+    
+    func hideCard() {
+        backgroundFrontImage.alpha = 0
+        backgroundImage.alpha = 0
+        imageView.alpha = 0
+    }
+    
+    func showCard() {
+        backgroundFrontImage.alpha = 1
+        backgroundImage.alpha = 1
+        imageView.alpha = 1
     }
     
 }

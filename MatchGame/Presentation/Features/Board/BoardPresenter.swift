@@ -3,8 +3,6 @@ import Foundation
 protocol BoardPresenter {
     func setupView(_ view: BoardView)
     func viewDidLoad()
-    
-    func tapOnACard(idCard: Int)
 }
 
 class BoardPresenterImplementation: BoardPresenter {
@@ -42,18 +40,6 @@ class BoardPresenterImplementation: BoardPresenter {
             cardListWithPairs.append(item)
         }
         return cardListWithPairs
-    }
-    
-    func tapOnACard(idCard: Int) {
-        if idFirstCard == -1 {
-            idFirstCard = idCard
-        } else {
-            idSecondCard = idCard
-        
-        
-            
-        }
-        
     }
     
 }
