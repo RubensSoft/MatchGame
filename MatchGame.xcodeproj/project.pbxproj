@@ -34,6 +34,7 @@
 		0ECCB76A24311C3600404DDC /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECCB76924311C3600404DDC /* BoardViewController.swift */; };
 		0ECCB76C24311C4000404DDC /* BoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0ECCB76B24311C4000404DDC /* BoardView.xib */; };
 		0ECCB76E24311D6D00404DDC /* BoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECCB76D24311D6D00404DDC /* BoardPresenter.swift */; };
+		0EEF877C2439F16800308C47 /* CheckMatchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEF877B2439F16800308C47 /* CheckMatchUseCase.swift */; };
 		10774061C25C927E7920DC52 /* Pods_MatchGame_MatchGameUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE35832304DC28BFB4DDDC44 /* Pods_MatchGame_MatchGameUITests.framework */; };
 		2C6A94DB32B17815C681DBED /* Pods_MatchGameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 413FA10EB6D287F2F3864C7F /* Pods_MatchGameTests.framework */; };
 		6B42CACC98D767A4D07C6F2D /* Pods_MatchGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD20DCAB06DC1083DB4EB35 /* Pods_MatchGame.framework */; };
@@ -92,6 +93,7 @@
 		0ECCB76924311C3600404DDC /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		0ECCB76B24311C4000404DDC /* BoardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardView.xib; sourceTree = "<group>"; };
 		0ECCB76D24311D6D00404DDC /* BoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPresenter.swift; sourceTree = "<group>"; };
+		0EEF877B2439F16800308C47 /* CheckMatchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMatchUseCase.swift; sourceTree = "<group>"; };
 		413FA10EB6D287F2F3864C7F /* Pods_MatchGameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchGameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0257896C2FDB3AF5ABCF03 /* Pods-MatchGame-MatchGameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatchGame-MatchGameUITests.debug.xcconfig"; path = "Target Support Files/Pods-MatchGame-MatchGameUITests/Pods-MatchGame-MatchGameUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CD20DCAB06DC1083DB4EB35 /* Pods_MatchGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				0E333B2E24374DDC005D5453 /* GetCardsUseCase.swift */,
+				0EEF877B2439F16800308C47 /* CheckMatchUseCase.swift */,
 			);
 			path = usecases;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 			files = (
 				0EA557132431396F004A0BF2 /* BoardConfigurator.swift in Sources */,
 				0E333B2B24374D31005D5453 /* CardRepository.swift in Sources */,
+				0EEF877C2439F16800308C47 /* CheckMatchUseCase.swift in Sources */,
 				0E333B3624374F19005D5453 /* AlamofireWrapper.swift in Sources */,
 				0E9D93F4243755C300398B39 /* CardMapper.swift in Sources */,
 				0ECCB76E24311D6D00404DDC /* BoardPresenter.swift in Sources */,

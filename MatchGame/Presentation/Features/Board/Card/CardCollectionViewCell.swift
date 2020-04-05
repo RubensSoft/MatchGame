@@ -12,7 +12,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func setCard(card: Card) {
-        self.imageView.image = UIImage(named: "\(card.name)")
+        imageView.image = UIImage(named: "\(card.name)")
         
         if card.isMatch {
             hideCard()
@@ -29,7 +29,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func flipFront() {
-        self.imageView.isHidden = false
+        imageView.isHidden = false
         UIView.transition(from: backgroundImage, to: backgroundFrontImage, duration: 0.4, options: [.transitionFlipFromLeft, .showHideTransitionViews], completion: nil)
     }
     
@@ -41,14 +41,10 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func remove(){
-        
         UIView.animate(withDuration: 0.3, delay: 0.5, options: .autoreverse, animations: {
-            //             self.backgroundImage.isHidden = true
             self.backgroundImage.alpha = 0
-            
             self.backgroundFrontImage.alpha = 0
             self.imageView.alpha = 0
-            
         }, completion: nil)
     }
     

@@ -3,18 +3,19 @@ import Foundation
 protocol BoardPresenter {
     func setupView(_ view: BoardView)
     func viewDidLoad()
+    
+    func checkCards(firstCard: Card, secondCard: Card)
 }
 
 class BoardPresenterImplementation: BoardPresenter {
     private weak var view: BoardView?
     private let router: BoardRouter
     private let getCardsUseCase: GetCardsUseCase?
+    private let checkMatchUseCase: CheckMatchUseCase?
     
-    private var idFirstCard: Int = -1
-    private var idSecondCard: Int = -1
-    
-    init(cardUseCase: GetCardsUseCase, router: BoardRouter) {
-        self.getCardsUseCase = cardUseCase
+    init(getCardUseCase: GetCardsUseCase, checkMatchUseCase: CheckMatchUseCase, router: BoardRouter) {
+        self.getCardsUseCase = getCardUseCase
+        self.checkMatchUseCase = checkMatchUseCase
         self.router = router
     }
     
@@ -40,6 +41,22 @@ class BoardPresenterImplementation: BoardPresenter {
             cardListWithPairs.append(item)
         }
         return cardListWithPairs
+    }
+    
+    func checkCards(firstCard: Card, secondCard: Card) {
+        checkMatchUseCase?.execute(firsCard: firstCard, secondCard: secondCard, completion: { (isMatch) in
+            
+            if isMatch {
+                self.view?.showMatchCards()
+            } else {
+                self.view?.showNotMatchCards()
+            }
+            
+            self.view?.resetValuesForTheNextFlip()
+            
+        }, failure: { (error) in
+            self.view?.showError(error: error)
+        })
     }
     
 }
