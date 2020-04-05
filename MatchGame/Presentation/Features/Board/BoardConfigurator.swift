@@ -3,9 +3,9 @@ import Foundation
 class BoardConfigurator {
     func configure(controller: BoardViewController){
         let getCarsdUseCase = GetCardsUseCaseImplementation()
-        let checkMatchUseCase = CheckMatchUseCaseImplementation()
+        let tapOnACardUseCase = TapOnACardUseCaseImplementation()
         let router = BoardRouter(controller: controller)
         
-        controller.presenter = BoardPresenterImplementation(getCardUseCase: getCarsdUseCase, checkMatchUseCase: checkMatchUseCase, router: router)
+        controller.presenter = BoardPresenterImplementation(getCardUseCase: getCarsdUseCase, tapOnACardUseCase: tapOnACardUseCase, router: router)
     }
 }

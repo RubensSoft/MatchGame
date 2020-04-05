@@ -4,18 +4,19 @@ protocol BoardPresenter {
     func setupView(_ view: BoardView)
     func viewDidLoad()
     
-    func checkCards(firstCard: Card, secondCard: Card)
+    func tapOnACard(card: Card)
+    
 }
 
 class BoardPresenterImplementation: BoardPresenter {
     private weak var view: BoardView?
     private let router: BoardRouter
     private let getCardsUseCase: GetCardsUseCase?
-    private let checkMatchUseCase: CheckMatchUseCase?
+    private let tapOnACardUseCase: TapOnACardUseCase?
     
-    init(getCardUseCase: GetCardsUseCase, checkMatchUseCase: CheckMatchUseCase, router: BoardRouter) {
+    init(getCardUseCase: GetCardsUseCase, tapOnACardUseCase: TapOnACardUseCase, router: BoardRouter) {
         self.getCardsUseCase = getCardUseCase
-        self.checkMatchUseCase = checkMatchUseCase
+        self.tapOnACardUseCase = tapOnACardUseCase
         self.router = router
     }
     
@@ -42,10 +43,9 @@ class BoardPresenterImplementation: BoardPresenter {
         }
         return cardListWithPairs
     }
-    
-    func checkCards(firstCard: Card, secondCard: Card) {
-        checkMatchUseCase?.execute(firsCard: firstCard, secondCard: secondCard, completion: { (isMatch) in
-            
+
+    func tapOnACard(card: Card) {
+        tapOnACardUseCase?.execute(card: card, completion: { (isMatch) in
             if isMatch {
                 self.view?.showMatchCards()
             } else {
@@ -53,9 +53,8 @@ class BoardPresenterImplementation: BoardPresenter {
             }
             
             self.view?.resetValuesForTheNextFlip()
-            
         }, failure: { (error) in
-            self.view?.showError(error: error)
+            view?.showError(error: error)
         })
     }
     

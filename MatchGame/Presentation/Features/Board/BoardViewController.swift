@@ -4,6 +4,7 @@ protocol BoardView: class {
     func showError(error: String)
     func showCards(cards: [Card])
 
+    func showFlipCard()
     func showMatchCards()
     func showNotMatchCards()
     func resetValuesForTheNextFlip()
@@ -55,6 +56,10 @@ extension BoardViewController: BoardView {
         collectionView.reloadData()
     }
     
+    func showFlipCard() {
+        
+    }
+    
     func showMatchCards(){
         setMatchFrontCards()
         removeFrontCell()
@@ -89,21 +94,13 @@ extension BoardViewController: BoardView {
         cellTwo?.flipBack()
     }
     
-    
-    
     func resetValuesForTheNextFlip() {
         let cellOne = collectionView.cellForItem(at: indexFirstCard!) as? CardCollectionViewCell
         if cellOne == nil {
             collectionView.reloadItems(at: [indexFirstCard!])
         }
-        
         indexFirstCard = nil
-        // indexSecondCard = nil
     }
-    
-    
-    
-    
 }
 
 
@@ -113,14 +110,7 @@ extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSou
         var widthItemSize = UIScreen.main.bounds.width/2.25
         var heightItemSize = UIScreen.main.bounds.height/4
         
-        var isLandscape: Bool {
-            return UIApplication.shared.windows
-                .first?
-                .windowScene?
-                .interfaceOrientation
-                .isLandscape ?? false
-        }
-        
+        let isLandscape: Bool = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isLandscape ?? false
         if isLandscape {
             widthItemSize = UIScreen.main.bounds.width/4.5
             heightItemSize = UIScreen.main.bounds.height/2
@@ -151,7 +141,7 @@ extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
         let card = cards[indexPath.row]
         
-        if !cards[indexPath.row].isFlipped && !cards[indexPath.row].isMatch {
+        if checkIfCardIsNotFlippedAndIsNotMatched(card: card) {
             cell.flipFront()
             cards[indexPath.row].isFlipped = true
         
@@ -159,10 +149,13 @@ extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 indexFirstCard = indexPath
             } else {
                 indexSecondCard = indexPath
-                let firstCard = cards[indexFirstCard!.row]
-                
-                presenter?.checkCards(firstCard: firstCard, secondCard: card)
             }
+            
+            presenter?.tapOnACard(card: card)
         }
+    }
+    
+    private func checkIfCardIsNotFlippedAndIsNotMatched(card: Card) -> Bool {
+        return !card.isFlipped && !card.isMatch
     }
 }
