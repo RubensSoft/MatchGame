@@ -5,19 +5,19 @@ protocol TapOnACardUseCase {
 }
 
 class TapOnACardUseCaseImplementation: TapOnACardUseCase {
-    var card: Card? = nil
+    var firstCard: Card? = nil
     
     func execute(card: Card, completion: (Bool) -> (), failure: (String) -> ()) {
-        if self.card == nil {
-            self.card = card
+        if self.firstCard == nil {
+            self.firstCard = card
         } else {
             let isMatch = checkMatch(secondCard: card)
             completion(isMatch)
-            self.card = nil
+            self.firstCard = nil
         }
     }
     
     private func checkMatch(secondCard: Card) -> Bool {
-        return self.card!.id == secondCard.id
+        return self.firstCard!.id == secondCard.id
     }
 }

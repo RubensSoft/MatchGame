@@ -3,9 +3,7 @@ import Foundation
 protocol BoardPresenter {
     func setupView(_ view: BoardView)
     func viewDidLoad()
-    
     func tapOnACard(card: Card)
-    
 }
 
 class BoardPresenterImplementation: BoardPresenter {
