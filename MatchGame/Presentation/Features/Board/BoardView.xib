@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -21,31 +22,43 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Guw-Me-GyR">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UOF-P5-sQR">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="qGe-YB-2Sf"/>
-                        <outlet property="delegate" destination="-1" id="WQU-BY-0WV"/>
-                    </connections>
-                </collectionView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="xlr-ID-L8G">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Db-4g-MHp" customClass="CountDownView" customModule="MatchGame" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="75" id="gIN-CN-U5D"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Guw-Me-GyR">
+                            <rect key="frame" x="0.0" y="76" width="414" height="742"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UOF-P5-sQR">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="qGe-YB-2Sf"/>
+                                <outlet property="delegate" destination="-1" id="WQU-BY-0WV"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Guw-Me-GyR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0vL-pz-bnd"/>
                 <constraint firstItem="mhG-ya-ky9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2y5-MG-Qdk"/>
                 <constraint firstAttribute="bottom" secondItem="mhG-ya-ky9" secondAttribute="bottom" id="Ej1-k3-C6j"/>
+                <constraint firstItem="xlr-ID-L8G" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="F3S-dB-Dyq"/>
                 <constraint firstItem="mhG-ya-ky9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fpq-JV-YMz"/>
-                <constraint firstItem="Guw-Me-GyR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="luq-tR-pcb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xlr-ID-L8G" secondAttribute="bottom" id="G1U-9z-Ra2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xlr-ID-L8G" secondAttribute="trailing" id="V11-cN-mTv"/>
+                <constraint firstItem="xlr-ID-L8G" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="j81-CL-Lft"/>
                 <constraint firstAttribute="trailing" secondItem="mhG-ya-ky9" secondAttribute="trailing" id="mNI-Dc-XZm"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Guw-Me-GyR" secondAttribute="trailing" id="uz8-el-TxO"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Guw-Me-GyR" secondAttribute="bottom" id="wnj-Xf-L28"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="131.8840579710145" y="114.50892857142857"/>
