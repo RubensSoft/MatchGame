@@ -4,14 +4,14 @@ Simple card game in which you have to find the pairs by flipping cards in pairs.
 
 ## Getting started 🚀
 
-### Pre-requisitos 📋
+### Requirements 📋
 
 Xcode.
 
 ### How to run it 🔧
 Open it on Xcode an run it.
 
-## Ejecutando las pruebas ⚙️
+## Playing the game ⚙️
 
 
 ## Deployment 📦
@@ -25,7 +25,7 @@ Open it on Xcode an run it.
 
 * **José Rubén Castro Soriano** - *Trabajo Inicial* - [RubensSoft](https://github.com/RubensSoft)
 
-## Licencia 📄
+## License 📄
 This project is under the GNU General Public License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgements 🎁
